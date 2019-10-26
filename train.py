@@ -15,7 +15,7 @@ with open('./consts.json') as json_file:
 def init_data(file_path, time_col, select_col):
     with fs.open(file_path) as f:
         df = pd.read_csv(f)
-        df = df[[time_col, select_col]][:300]
+        df = df[[time_col, select_col]][:-3000]
         df.columns = ['ds', 'y']
         df.head()
 
@@ -23,8 +23,8 @@ def init_data(file_path, time_col, select_col):
 
 def get_prophet():
     return Prophet() \
-        .add_seasonality(name="monthly", period=30.5, fourier_order=12) \
-        .add_seasonality(name="yearly", period=365.25, fourier_order=20) \
+        .add_seasonality(name="monthly", period=30.5, fourier_order=5) \
+        .add_seasonality(name="yearly", period=365.25, fourier_order=5) \
         .add_seasonality(name="quarterly", period=365.25/4, fourier_order=5, prior_scale = 15)
 
 def upload_results(results, _type):
@@ -62,5 +62,8 @@ if __name__ == "__main__":
         print('[Model] Building and packing...')
         fig = m.plot_components(forecast).savefig("%s.png" % _type)
 
+        # reformat
+        df.columns = [str(_type) + "_" + str(col) for col in df.columns]
+        
         # upload
         upload_results(forecast, _type)

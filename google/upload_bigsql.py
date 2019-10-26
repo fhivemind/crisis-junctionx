@@ -14,7 +14,7 @@ with open('../consts.json') as json_file:
 
 def load_data(file_path):
     df = pd.read_csv(file_path)
-    df.columns = ['timestamp', 'lang', 'long', 'height', 'speed', 'type', 'age']
+    df = df[['timestamp', 'lang', 'long', 'height', 'speed', 'type', 'age']]
     df.head()
 
     return df
