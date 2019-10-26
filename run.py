@@ -11,8 +11,8 @@ from core.model import Model
 
 def plot_results(predicted_data, true_data):
     fig = plt.figure(facecolor='white')
-    ax = fig.add_subplot(111)
-    ax.plot(true_data, label='True Data')
+    #ax = fig.add_subplot(111)
+    #ax.plot(true_data[:-200], label='True Data')
     plt.plot(predicted_data, label='Prediction')
     plt.legend()
     plt.savefig("RES.png")
@@ -20,8 +20,8 @@ def plot_results(predicted_data, true_data):
 
 def plot_results_multiple(predicted_data, true_data, prediction_len):
     fig = plt.figure(facecolor='white')
-    ax = fig.add_subplot(111)
-    ax.plot(true_data, label='True Data')
+    #ax = fig.add_subplot(111)
+    #ax.plot(true_data[:-200], label='True Data')
 	# Pad the list of predictions to shift it in the graph to it's correct start
     for i, data in enumerate(predicted_data):
         padding = [None for p in range(i * prediction_len)]
@@ -80,10 +80,11 @@ def main():
     predictions = model.predict_sequences_multiple(x_test, configs['data']['sequence_length'], configs['data']['sequence_length'])
     # predictions = model.predict_sequence_full(x_test, configs['data']['sequence_length'])
     predictions2 = model.predict_point_by_point(x_test)
+    print(predictions)
+    print(predictions2)
 
     plot_results_multiple(predictions, y_test, configs['data']['sequence_length'])
     plot_results(predictions2, y_test)
-
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,8 @@
 {
     "PROJECT": "crisis-257016",
     "TRAINING_BUCKET": "training-store-bucket",
+    "DATA_SET": "Data",
+    "DATA_TABLE": "Birds",
     "TRAINING_FILEPATH": "training-store-bucket/training/birds.csv",
     "AI_MODEL": "A1"
 }
