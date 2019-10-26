@@ -15,8 +15,6 @@ class BigSQL():
     table_ref = client.dataset(consts["DATA_SET"]).table(consts["DATA_TABLE"])
     table = client.get_table(table_ref) 
 
-    #def __init__(self):
-
     # get results
     def query(self, query_str):
         return self.client.query(query_str, location="US")
@@ -68,7 +66,10 @@ class BigSQL():
         """ % (user_lang, user_long, dist))
         return [_.values() for _ in query_job]
 
-    def predict(self, start_time, end_time, type):
+    def predict(self, start_time, end_time, pred, type=None):
+        """
+        pred=["daily", "monthly", "yearly"]
+        """
         start = datetime.strptime(start_time, '%Y-%m-%d %H:%M:%S')
         end = datetime.strptime(end_time, '%Y-%m-%d %H:%M:%S')
         diff = end-last_t
@@ -78,9 +79,35 @@ class BigSQL():
         start -= diff
         
         # perform prediction
+        start_str = start.strftime("%Y-%m-%d %H:%M:%S")
+        end_str = end.strftime("%Y-%m-%d %H:%M:%S")
+        query_job = self.client.query("""
+            SELECT 
+                t1.ds as timestamp, 
+                t1.%s as lang,
+                t2.%s as long
+            FROM 
+                `Predictions.lang` t1
+            JOIN `Predictions.long` t2 
+            ON t1.ds = t2.ds
+            WHERE
+                t1.ds >= "%s" AND
+                t1.ds <= "%s"
+        """ % (pred, pred, start_str, end_str))
+        res = [list(_.values()) for _ in query_job]
+        
+        # shift res
+        for x in res:
+            x[0] += diff
+
+        # return res
+        return res
+    
+    # delete specific object
+    def delete_row(self):
         return None
 
-if __name__ == "__main__":
-    handler = BigSQL()
-    res = handler.get_latest_by_animals(-40.44282073, -40.44282073, 0.1)
-    print(res)
+# if __name__ == "__main__":  
+    # handler = BigSQL()
+    # res = handler.get_latest_by_animals(-40.44282073, -40.44282073, 0.1)
+    # res = handler.predict("2018-12-31 12:00:00", "2019-12-31 12:00:00", "yearly")
