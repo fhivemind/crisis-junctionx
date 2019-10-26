@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import pandas as pd
+from pprint import pprint
 
 class DataLoader():
     """A class for loading and transforming data for the lstm model"""
@@ -9,7 +10,7 @@ class DataLoader():
         dataframe = pd.read_csv(filename)
         i_split = int(size * split)
         self.data_train = dataframe.get(cols).values[:i_split]
-        self.data_test  = dataframe.get(cols).values[i_split:]
+        self.data_test  = dataframe.get(cols).values[i_split:size]
         self.len_train  = len(self.data_train)
         self.len_test   = len(self.data_test)
         self.len_train_windows = None
