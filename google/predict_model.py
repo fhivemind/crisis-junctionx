@@ -1,6 +1,11 @@
 import googleapiclient.discovery
 from pprint import pprint
 
+# Import globals
+import json
+with open('../consts.json') as json_file:
+    consts = json.load(json_file)
+
 def predict_json(project, model, instances, version=None):
     """Send json data to a deployed model for prediction.
 
@@ -35,6 +40,7 @@ def predict_json(project, model, instances, version=None):
 
     return response['predictions']
 
+# MAIN IMPLEMENTATION
 if __name__ == "__main__":
     # define json
     json_request = {
@@ -45,8 +51,8 @@ if __name__ == "__main__":
     }
     # define request
     request = predict_json(
-        project="crisis-257016",
-        model="AI_MODEL",
+        project=consts["PROJECT"],
+        model=consts["AI_MODEL"],
         instances=json_request,
         version=None
     )

@@ -1,5 +1,10 @@
 import googleapiclient.discovery
 
+# Import globals
+import json
+with open('../consts.json') as json_file:
+    consts = json.load(json_file)
+
 # Create AI Training input specification
 def generate_input_json(input_file, output_folder):
     return {
@@ -43,8 +48,8 @@ def create_ai_job(project_name, job_name, input_file, output_folder):
     project_id = 'projects/{}'.format(project_name)
     new_job_id = len(cloudml.projects().jobs().list(parent=project_id).execute()["jobs"])
     job = generate_input_json(
-        input_file="gs://training-store-bucket/training/birds.csv", 
-        output_folder="gs://training-store-bucket/trained/"
+        input_file=input_file, 
+        output_folder=output_folder
     )
     job_spec = {'jobId': job_name+"_"+str(new_job_id), 'trainingInput': job}
 
@@ -62,8 +67,8 @@ def create_ai_job(project_name, job_name, input_file, output_folder):
 
 if __name__ == "__main__":
     create_ai_job(
-        project_name="crisis-257016",
-        job_name="training_birds_3", 
+        project_name=consts["PROJECT"],
+        job_name="training_birds", 
         input_file="gs://training-store-bucket/training/birds.csv", 
         output_folder="gs://training-store-bucket/trained/"
     )
