@@ -5,6 +5,7 @@
 			"lang",
 			"long"
 		],
+		"set_size": 500,
 		"sequence_length": 50,
 		"train_test_split": 0.85,
 		"normalise": false
