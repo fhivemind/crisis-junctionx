@@ -448,7 +448,7 @@ def updated():
         while True:
             delay = random.randint(MIN_DELAY, MAX_DELAY)
             gevent.sleep(delay)
-            ws.send('ready')
+            ws.send(str(delay))
     else:
         raise RuntimeError("Environment lacks WSGI WebSocket support")
 

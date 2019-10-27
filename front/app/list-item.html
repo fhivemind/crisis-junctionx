@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>crisis? Token Generation Event</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='/assets/css/bootstrap337.min.css' rel='stylesheet' type='text/css'>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/iframeResizer.contentWindow.min.js"></script>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="post-controller">
+        <div class="row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <br>
+                <div style="display: none;" class="alert alert-success" id="msg"></div>
+                <div style="display: none;" class="alert alert-danger" id="filetypes">Only jpg, jpeg, png, gif format allowed.</div>
+            </div>
+            <form class="form-horizontal col-sm-offset-2 col-sm-10" id="add-item-to-store">
+                <div class="form-group">
+                    <label for="product-name" class="col-sm-2 control-label"><b><h4><center>here your can notarize sourcing or corporate information on the blockchain</center></h4></b><br><br><br>Name of document or photo</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="product-name" class="form-control" id="product-name" placeholder="What document or photo would you like to notarize on the blockchain?" required="required"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product-description" class="col-sm-2 control-label">Detailed description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" name="product-description" rows="8" id="product-description" placeholder="Enter detailed description of the document or photo which is going to be notarized on the blockchain. This description as well as the photo or document you choose will be stored as decentralized immutable information on the blockchain for an infinite period of time."
+                            required="required"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product-image" class="col-sm-2 control-label">Upload one document or one photo</label>
+                    <div class="col-sm-10">
+                        <input type="file" multiple name="product-image" class="form-control" id="product-image" required="required">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product-verification" class="col-sm-2 control-label"><center>Verification type</center><br><br> <u>Product sourcing verification</u> is parts,components and/or raw materials sourcing information. in this section you as a company certify that a certain component, raw material and/or part you use in your production process has its origin, quality and properties as asserted. <br><br><u>Corporate verification</u> stands for - among others - a certificate of quality, a picture of the factory site, the certificate of incorporation, trademark ownership certificate, a document asserting the headquater's address, a picture of the machinery used in the production process, an environment protection certificate, a photo proving that the finished goods are stored as asserted or any other information which may be usefull to increase your company's reputation towards your customers. <br><br>By uploading this information immutably for an indefinite period of time to the blockchain, you as a company certify that this information is genuine and accept that decentralized information on the blockchain by its nature cannot be tampered with. Change to this information will also be notarized on the blockchain, whereas your customers will be able to retrieve the changes that have been made to this information. <br><br>This comparison of old and new information is not susceptible to manipulation due to the fact that everything is recorded immutably on the blockchain.<br><br>Please choose below whether the verification you have conducted is a sourcing or corporate verification.</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="product-verification" id="product-verification">
+                        <option>Product sourcing</option>
+                        <option>Company certification</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="form-group hidden">
+                    <input type="number" min="0" name="product-userId" class="form-control" id="product-userId"></input>
+                </div>
+                <br>
+                <div class="form-group no-margin">
+                    <div class="col-sm-12" style="padding: 0">
+                        <button type="submit" class="btn btn-primary submit-btn">VERIFY on the blockchain</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

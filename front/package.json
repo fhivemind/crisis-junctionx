@@ -1,0 +1,47 @@
+{
+  "name": "front",
+  "version": "1.0.1",
+  "description": "desc",
+  "scripts": {
+    "lint": "eslint ./",
+    "test": "mocha",
+    "build": "rimraf public && webpack -p --config webpack.production.config.js",
+    "dev": "concurrently --kill-others \"webpack-dev-server\" \"node .\\server\\server.js dev build\"",
+    "server": "forever stopall && forever server/server.js"
+  },
+  "author": "...",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "concurrently": "^4.1.0",
+    "eslint": "^3.14.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-plugin-babel": "^4.0.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^2.0.0",
+    "webpack-dev-server": "^3.1.14"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/register": "^7.0.0",
+    "@babel/runtime": "^7.3.1",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "babel-loader": "^8.0.5",
+    "babel-eslint": "^10.0.1",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.0.1",
+    "express": "4.16.4",
+    "log-timestamp": "^0.3.0",
+    "mocha": "^5.2.0",
+    "mongoose": "^5.4.6",
+    "morgan": "^1.9.1",
+    "rc": "^1.2.8",
+    "style-loader": "^0.13.1",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  }
+}

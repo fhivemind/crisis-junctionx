@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>crisis? Token Generation Event</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='/assets/css/bootstrap337.min.css' rel='stylesheet' type='text/css'>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/iframeResizer.contentWindow.min.js"></script>
+    <script src="./app.js"></script>
+
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-sm-12" style="padding: 0 !important">
+            <br>
+            <form class="form-horizontal" id="search-filter">
+                <div class="col-12">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" id="txtSearch" />
+                        <div class="input-group-btn">
+                            <button class="btn btn-primary" id="submitSearch" type="submit">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="" id="empty" style="display: none">
+                <br>
+                <div style="border-radius: 0; margin-bottom: 0" class="alert alert-danger">
+                    <h4 style="margin: 0; text-align: center" id="empty-text">⚠ Empty!</h4>
+                </div>
+                <div id="empty-pagination"></div>
+            </div>
+            <div id="product-list-data">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

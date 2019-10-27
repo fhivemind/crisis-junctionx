@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+contracts
+migrations
+test
+build
+.es*
+.git*
+.babelrc
+*.md
+*.gyp
+truffle.js

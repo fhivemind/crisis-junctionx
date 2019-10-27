@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="shortcut icon" type="image/ico" href="/assets/img/crisis?.png">
+    <title>crisis?</title>
+    <script src="./app.js"></script>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- carousel CSS -->
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <!-- animations CSS -->
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <!-- mobile menu CSS -->
+    <link rel="stylesheet" href="/assets/css/slicknav.min.css">
+    <!--css animation-->
+    <link rel="stylesheet" href="/assets/css/animation.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- responsive CSS -->
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+</head>
+
+<body>
+    <!-- Crowdsale -->
+    <div class="container-loader">
+        <div class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-6 offset-sm-3 col-xs-6 offset-xs-3" id="preloader">
+            <svg viewBox="-2000 -1000 4000 2000">
+                <path id="inf" d="M354-354A500 500 0 1 1 354 354L-354-354A500 500 0 1 0-354 354z"></path>
+                <use xlink:href="#inf" stroke-dasharray="1570 5143" stroke-dashoffset="6713px"></use>
+            </svg>
+            <h3 class="text-center">Loading, please wait...</h3>
+        </div>
+    </div>
+
+    <!--welcome area start-->
+    <div class="welcome-area v2 wow fadeInUp" id="crowdsale-controller">
+        <div id="particles-js"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 align-self-center">
+                    <div class="welcome-right">
+                        <center> <img src="/assets/img/crisis?.png" /> </center><br><br>
+                        <div class="space-10"></div>
+                        <div class="welcome-text">
+                            <center>
+                                <h1>
+                                    crisis? </h1> <br> <br>
+                                <h2>Token Generation Event</h2>
+
+                            </center><br>
+                            <center>
+                                <h4>Here you can buy crisis? Tokens.<br> Minimum purchasing amount is 50 tokens for 0.5 ETH.</h4>
+                            </center>
+                        </div>
+                        <div class="welcome-btn">
+                            <center> <a href="https://github.com/crisis?-tge/smart_contract" class="gradient-btn v2 mr-20">Check Smart Contract on Github</a> </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="ico-heading">
+                                <h1><a href="#">Token sale</a> Live data</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="v2 welcome-progress">
+                        <div style="display: none;" class="alert alert-success" id="msg"></div>
+                        <h4 id="timer-title" class="no-margin">Token sale status</h4>
+                        <div class="progress-time">
+                            <div class="row">
+                                <div class="col">
+                                    <span id="days" class="timeOne"></span>
+                                    <h5>days</h5>
+                                </div>
+                                <div class="col">
+                                    <span id="hours" class="timeTwo"></span>
+                                    <h5>hours</h5>
+                                </div>
+                                <div class="col">
+                                    <span id="minutes" class="timeTrhee"></span>
+                                    <h5>minutes</h5>
+                                </div>
+                                <div class="col">
+                                    <span id="seconds" class="timeFour"></span>
+                                    <h5>seconds</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: none" id="show-expired">
+                            <div class="col" style="padding: 0">
+                                <span id="expired">closed</span>
+                            </div>
+                        </div>
+                        <div class="space-30"></div>
+                        <div class="prgress-bar">
+                            <div class="wow fadeInUp ico-area">
+                                <div class="container">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-6 col-lg-6">
+                                            <div class="heading single-ico">
+                                                <h5><a href="#">Token price</a></h5>
+                                                <h3>
+                                                    <span id="crowdsale-cap-rate">1000 CB1</span>
+                                                    <hr class="token-divider"> 1 ETH <img src="/assets/img/eth.png" style="width: 31px; height: 34px" id="logo-img">
+                                                </h3>
+                                            </div>
+                                            <div class="space-20"></div>
+                                        </div>
+                                        <div class="col-6 col-lg-6 text-right">
+                                            <div class="heading single-ico">
+                                                <h5><a href="#">Total supply</a></h5>
+                                                <h3>
+                                                    <span id="token-total">1000000</span>
+                                                    <hr class="token-divider">
+                                                    <span id="token-name">Token</span>s
+                                                </h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-lg-12">
+                                            <div class="heading single-ico">
+                                                <h5><a href="#">Token address</a></h5>
+                                                <h3>
+                                                    <input class="form-control text-center input-sm disabled" id="token-address" disabled/>
+                                                </h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="custom-progressBar">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" id="cap-status" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                                        <div class="progress-details">
+                                                            <p class="crowdsale-sold-wrapper"><span id="crowdsale-sold"> </span> Sold</p>
+                                                            <div class="progress-d-top"></div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="progress-bar progress-bar-error" id="cap-reserved" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+                                                        reserved
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="space-10"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="single-prgress-b single-ico">
+                                        <p class="no-margin-bottom">
+                                            Remaining tokens for sale <br>
+                                            <span id="crowdsale-remaining">250,000</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="single-prgress-b text-right single-ico">
+                                        <p class="no-margin-bottom">
+                                            Total amount of tokens for sale <span id="crowdsale-total">250,000</span><br>
+                                            <span class="small percentage"><span id="avaliable-percentage" class="small-percentage"> 77%</span> of total token supply are for sale</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="token-purchase-form" style="display: none">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="space-20"></div>
+                                    <h4 class="no-margin">Purchase tokens</h4>
+                                    <div class="space-10"></div>
+                                    <hr class="token-divider">
+                                    <div class="space-10"></div>
+                                    <div style="display: none;" class="alert alert-success" id="msg"></div>
+                                </div>
+                            </div>
+
+                            <!-- KUPOVINA TOKENA -->
+                            <form class="form-horizontal" id="buy-tokens">
+                                <div class="form-group row">
+                                    <div class="col-sm-8 col-form-label heading single-ico" style="padding-top: 0px;">
+                                        <h5 class="no-margin"><a href="#">Amount of crisis? Tokens you want to buy</a></h5>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input type="number" min="50" step="50" name="token-amount" class="form-control form-control-lg" id="token-amount" placeholder="0" required="required"></input>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <button type="submit" id="buy-tokens" class="btn gradient-btn btn-block">Buy tokens</button>
+                            </form>
+                        </div>
+
+                        <div class="row" id="adm-control" style="display: none">
+                            <div class="col-lg-12">
+                                <div class="space-30"></div>
+                                <hr class="token-divider">
+                                <div class="space-10"></div>
+                                <div class="single-about-text">
+                                    <h4>admin control</h4>
+                                    <div class="space-10"></div>
+                                    <form id="add-to-whitelist" style="display: none">
+                                        <div class="row">
+
+                                            <div class="col-lg-8">
+                                                <input name="whitelist-address" class="form-control form-control-sm" id="whitelist-address" placeholder="Address to whitelist" required="required"></input>
+                                            </div>
+
+                                            <div class="col-lg-4 text-right">
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <button type="submit" class="btn btn-sm btn-primary col" id="whitelist-add-btn">Add</button>
+                                                    <button type="submit" class="btn btn-sm btn-danger col" id="whitelist-rm-btn">Remove</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+
+                                    <div class="" id="pause-control" style="display:none">
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-lg-8 heading single-ico">
+                                                <h5 class="middle-token">
+                                                    Token paused:
+                                                    <a href="#" id="token-pause-data" style="float: right">True</a>
+                                                </h5>
+                                            </div>
+
+                                            <div class="col-lg-4 pull-right text-right">
+                                                <button type="submit" class="btn btn-sm btn-block btn-warning" id="toggle-pause-btn">Pause</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-12 pull-right text-left" id="finalize-wrapper" style="display: none">
+                                            <br>
+                                            <button type="submit" class="btn btn-info btn-sm btn-block" id="owner-finalize-btn">Distribute to owner</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--welcome area end-->
+    <!-- jquery 2.2.4 js-->
+    <script src="/assets/js/jquery-2.2.4.min.js"></script>
+    <!-- popper js-->
+    <script src="/assets/js/popper.js"></script>
+    <!-- carousel js-->
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <!-- wow js-->
+    <script src="/assets/js/wow.min.js"></script>
+    <!-- bootstrap js-->
+    <script src="/assets/js/bootstrap.min.js"></script>\
+    <!--skroller js-->
+    <script src="/assets/js/skrollr.min.js"></script>
+    <!--mobile menu js-->
+    <script src="/assets/js/jquery.slicknav.min.js"></script>
+    <!--particle s-->
+    <script src="/assets/js/particles.min.js"></script>
+    <!-- main js-->
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>
