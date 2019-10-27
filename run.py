@@ -74,7 +74,7 @@ def main():
 
     x_test, y_test = data.get_test_data(
         seq_len=configs['data']['sequence_length'],
-        normalise=configs['data']['normalise']
+        normalise=False
     )
 
     predictions = model.predict_sequences_multiple(x_test, configs['data']['sequence_length'], configs['data']['sequence_length'])

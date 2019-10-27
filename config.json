@@ -7,7 +7,7 @@
 		"set_size": 5000,
 		"sequence_length": 21,
 		"train_test_split": 0.8,
-		"normalise": false
+		"normalise": true
 	},
 	"training": {
 		"epochs": 14,
