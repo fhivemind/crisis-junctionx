@@ -93,6 +93,7 @@ class BigSQL():
             WHERE
                 t1.ds >= "%s" AND
                 t1.ds <= "%s"
+            ORDER BY timestamp ASC
         """ % (pred, pred, start_str, end_str))
         res = [list(_.values()) for _ in query_job]
         
@@ -103,11 +104,28 @@ class BigSQL():
         # return res
         return res
     
+    def get_data(self, start_time, end_time, type=None):
+        query_job = self.client.query("""
+            SELECT 
+                t1.timestamp as timestamp, 
+                t1.lang as lang,
+                t1.long as long,
+                t1.type as type
+            FROM 
+                `Data.Birds` t1
+            WHERE
+                t1.timestamp >= "%s" AND
+                t1.timestamp <= "%s"
+            ORDER BY timestamp ASC
+        """ % (start_time, end_time))
+        return [list(_.values()) for _ in query_job]
+    
     # delete specific object
     def delete_row(self):
         return None
 
-# if __name__ == "__main__":  
-    # handler = BigSQL()
+if __name__ == "__main__":  
+    handler = BigSQL()
     # res = handler.get_latest_by_animals(-40.44282073, -40.44282073, 0.1)
-    # res = handler.predict("2018-12-31 12:00:00", "2019-12-31 12:00:00", "yearly")
+    res = handler.get_data("2013-01-31 12:00:00", "2013-09-31 12:00:00")
+    print(res)
